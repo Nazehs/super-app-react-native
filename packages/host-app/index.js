@@ -1,11 +1,13 @@
-import { ScriptManager, Federated } from "@callstack/repack/client";
-import { AppRegistry } from 'react-native';
+import { AppRegistry, Platform } from 'react-native';
 import App from './src/App';
 import { name as appName } from './app.json';
+
+import { ScriptManager, Federated } from '@callstack/repack/client';
+
 ScriptManager.shared.addResolver(async (scriptId, caller) => {
     const resolveURL = Federated.createURLResolver({
         containers: {
-            MiniApp: "http://localhost:9000/[name][ext]",
+            MiniApp: 'http://localhost:9000/[name][ext]',
         },
     });
 
@@ -19,4 +21,3 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
         };
     }
 });
-AppRegistry.registerComponent(appName, () => App);

@@ -1,7 +1,7 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {MainStackNavigationProp} from '../navigation/MainNavigator';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { MainStackNavigationProp } from '../navigation/MainNavigator';
 
 const HomeScreen = () => {
   const navigation = useNavigation<MainStackNavigationProp>();
@@ -14,6 +14,13 @@ const HomeScreen = () => {
         title="Navigate to DetailScreen"
         onPress={() => {
           navigation.navigate('Detail');
+        }}
+      />
+      <Button
+        color="rgba(127, 103, 190, 1)"
+        title="Navigate to MiniApp"
+        onPress={() => {
+          navigation.navigate('MiniApp');
         }}
       />
     </View>

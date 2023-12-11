@@ -247,7 +247,7 @@ export default env => {
                     'react-native': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '0.72.3',
+                        requiredVersion: '0.72.7',
                     },
                     '@react-navigation/native': {
                         singleton: true,

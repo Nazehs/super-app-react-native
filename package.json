@@ -12,8 +12,7 @@
   "packageManager": "yarn@3.4.1",
   "scripts": {
     "bootstrap": "yarn && yarn workspaces foreach run bootstrap",
-    "start": "react-native webpack-start --port 9000",
-    "start:standalone": "STANDALONE=1 react-native webpack-start",
+    "start": "concurrently -P 'yarn:start:*(!standalone) {1}'",
     "start:host-app": "yarn workspace HostApp run start",
     "start:mini-app": "yarn workspace MiniApp run start",
     "run:host-app:ios": "yarn workspace HostApp run ios",

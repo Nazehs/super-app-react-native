@@ -1,6 +1,7 @@
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import * as Repack from '@callstack/repack';
+
 const STANDALONE = Boolean(process.env.STANDALONE);
 /**
  * More documentation, installation, usage, motivation and differences with Metro is available at:
@@ -17,7 +18,7 @@ const STANDALONE = Boolean(process.env.STANDALONE);
  * @param env Environment options passed from either Webpack CLI or React Native CLI
  *            when running with `react-native start/bundle`.
  */
-export default (env) => {
+export default env => {
     const {
         mode = 'development',
         context = Repack.getDirname(import.meta.url),
@@ -38,14 +39,14 @@ export default (env) => {
     }
 
     /**
-   * Using Module Federation might require disabling hmr.
-   * Uncomment below to set `devServer.hmr` to `false`.
-   *
-   * Keep in mind that `devServer` object is not available
-   * when running `webpack-bundle` command. Be sure
-   * to check its value to avoid accessing undefined value,
-   * otherwise an error might occur.
-   */
+     * Using Module Federation might require disabling hmr.
+     * Uncomment below to set `devServer.hmr` to `false`.
+     *
+     * Keep in mind that `devServer` object is not available
+     * when running `webpack-bundle` command. Be sure
+     * to check its value to avoid accessing undefined value,
+     * otherwise an error might occur.
+     */
     // if (devServer) {
     //   devServer.hmr = false;
     // }
@@ -150,12 +151,12 @@ export default (env) => {
                 {
                     test: /\.[jt]sx?$/,
                     include: [
-                        /node_modules(.*[/\\])+react\//,
-                        /node_modules(.*[/\\])+react-native/,
+                        /node_modules(.*[/\\])+react/,
                         /node_modules(.*[/\\])+@react-native/,
                         /node_modules(.*[/\\])+@react-navigation/,
                         /node_modules(.*[/\\])+@react-native-community/,
                         /node_modules(.*[/\\])+@expo/,
+                        /node_modules(.*[/\\])+react-freeze/,
                         /node_modules(.*[/\\])+pretty-format/,
                         /node_modules(.*[/\\])+metro/,
                         /node_modules(.*[/\\])+abort-controller/,
@@ -235,7 +236,7 @@ export default (env) => {
             new Repack.plugins.ModuleFederationPlugin({
                 name: 'MiniApp',
                 exposes: {
-                    './MiniApp': './src/navigation/MainNavigator',
+                    './MiniAppNavigator': './src/navigation/MainNavigator',
                 },
                 shared: {
                     react: {
@@ -246,17 +247,17 @@ export default (env) => {
                     'react-native': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '0.71.3',
+                        requiredVersion: '0.72.3',
                     },
                     '@react-navigation/native': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '6.0.14',
+                        requiredVersion: '6.1.6',
                     },
                     '@react-navigation/native-stack': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '6.9.2',
+                        requiredVersion: '6.9.12',
                     },
                     'react-native-safe-area-context': {
                         singleton: true,

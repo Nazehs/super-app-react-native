@@ -21,3 +21,5 @@ ScriptManager.shared.addResolver(async (scriptId, caller) => {
         };
     }
 });
+
+AppRegistry.registerComponent(appName, () => App);

@@ -2,7 +2,6 @@ import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
 import * as Repack from '@callstack/repack';
 
-const STANDALONE = Boolean(process.env.STANDALONE);
 /**
  * More documentation, installation, usage, motivation and differences with Metro is available at:
  * https://github.com/callstack/repack/blob/main/README.md
@@ -234,35 +233,36 @@ export default env => {
         },
       }),
       new Repack.plugins.ModuleFederationPlugin({
+        name: 'HostApp',
         shared: {
           react: {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '18.2.0',
           },
           'react-native': {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '0.72.3',
           },
           '@react-navigation/native': {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '6.1.6',
           },
           '@react-navigation/native-stack': {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '6.9.12',
           },
           'react-native-safe-area-context': {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '4.5.0',
           },
           'react-native-screens': {
             singleton: true,
-            eager: STANDALONE,
+            eager: true,
             requiredVersion: '3.20.0',
           },
         },

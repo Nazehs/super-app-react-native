@@ -10197,9 +10197,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"super-app-example@workspace:.":
+"super-app-react-native@workspace:.":
   version: 0.0.0-use.local
-  resolution: "super-app-example@workspace:."
+  resolution: "super-app-react-native@workspace:."
   dependencies:
     concurrently: ^7.6.0
   languageName: unknown

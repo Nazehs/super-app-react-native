@@ -5,7 +5,6 @@ Welcome to the **Super App Example** repository! This project is part of a tutor
 There are 2 branches in this repository:
 
 - `main` - starting point for the tutorial
-- `finished` - the end result that you should achieve after following the steps in the tutorial
 
 Learn more about Super Apps here: [https://www.callstack.com/super-app-development](https://www.callstack.com/super-app-development?utm_campaign=super_apps&utm_source=github&utm_content=super_apps_example).
 
@@ -22,7 +21,7 @@ Follow these steps to set up the project on your local machine.
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/callstack/super-app-react-native.git
+   git clone https://github.com/Nazehs/super-app-react-native.git
    ```
 
 2. Install the dependencies (including pods):
@@ -46,10 +45,6 @@ Follow these steps to set up the project on your local machine.
    # or
    yarn run:host-app:android
    ```
-
-## Made with ❤️ at Callstack
-
-Super App Example is an open source project and will always remain free to use. If you think it's cool, please star it 🌟. [Callstack][callstack-readme-with-love] is a group of React and React Native geeks, contact us at [hello@callstack.com](mailto:hello@callstack.com) if you need any help with these or just want to say hi!
 
 <!-- badges -->
 

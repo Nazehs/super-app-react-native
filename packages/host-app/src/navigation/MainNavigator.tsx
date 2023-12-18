@@ -8,10 +8,14 @@ import {
 import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
 import MiniAppScreen from '../screens/MiniAppScreen';
+import NewsScreen from '../screens/NewsScreen';
+
 export type MainStackParamList = {
   Home: undefined;
   Detail: undefined;
   MiniApp: undefined;
+  news: undefined;
+  MiniAppExt: undefined;
 };
 
 export type MainStackNavigationProp =
@@ -32,6 +36,7 @@ const MainNavigator = () => {
       <Main.Screen name="Home" component={HomeScreen} />
       <Main.Screen name="Detail" component={DetailScreen} />
       <Main.Screen name="MiniApp" component={MiniAppScreen} />
+      <Main.Screen name="news" component={NewsScreen} />
     </Main.Navigator>
   );
 };

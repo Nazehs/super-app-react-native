@@ -11,6 +11,7 @@ import GalleryScreen from '../screens/GalleryScreen';
 export type MainStackParamList = {
   Home: undefined;
   Gallery: undefined;
+  news: undefined;
 };
 
 export type MainStackNavigationProp =

@@ -234,6 +234,10 @@ export default env => {
       }),
       new Repack.plugins.ModuleFederationPlugin({
         name: 'HostApp',
+        remotes: {
+          news: 'news@http://localhost:9001/remoteEntry.js',
+          MiniAppExt: 'MiniAppExt@http://localhost:9002/remoteEntry.js',
+        },
         shared: {
           react: {
             singleton: true,
@@ -243,7 +247,7 @@ export default env => {
           'react-native': {
             singleton: true,
             eager: true,
-            requiredVersion: '0.72.3',
+            requiredVersion: '0.72.7',
           },
           '@react-navigation/native': {
             singleton: true,

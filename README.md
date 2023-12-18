@@ -24,7 +24,13 @@ Follow these steps to set up the project on your local machine.
    git clone https://github.com/Nazehs/super-app-react-native.git
    ```
 
-2. Install the dependencies (including pods):
+2. Clone the news app test repo for remote connection
+
+```sh
+https://github.com/Nazehs/news-mini-app-test.git
+```
+
+3. Install the dependencies (including pods for both):
 
    ```sh
    yarn bootstrap
@@ -46,6 +52,8 @@ Follow these steps to set up the project on your local machine.
    yarn run:host-app:android
    ```
 
-<!-- badges -->
+Note: If you do need to run the remote app you need to start the server on the news app repo with the below command
 
-[callstack-readme-with-love]: https://callstack.com/?utm_source=github.com&utm_medium=referral&utm_campaign=super-app-template&utm_term=readme-with-love
+```sh
+yarn start
+```

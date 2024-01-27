@@ -242,32 +242,32 @@ export default env => {
                     react: {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '18.2.0',
+                        requiredVersion: '^18.2.0',
                     },
                     'react-native': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '0.72.7',
+                        requiredVersion: '^0.72.7',
                     },
                     '@react-navigation/native': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '6.1.6',
+                        requiredVersion: '^6.1.6',
                     },
                     '@react-navigation/native-stack': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '6.9.12',
+                        requiredVersion: '^6.9.12',
                     },
                     'react-native-safe-area-context': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '4.5.0',
+                        requiredVersion: '^4.5.0',
                     },
                     'react-native-screens': {
                         singleton: true,
                         eager: STANDALONE,
-                        requiredVersion: '3.20.0',
+                        requiredVersion: '^3.20.0',
                     },
                 },
             }),

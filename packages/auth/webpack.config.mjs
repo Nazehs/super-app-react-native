@@ -1,7 +1,7 @@
+import * as Repack from '@callstack/repack';
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
-import * as Repack from '@callstack/repack';
-
+import { getSharedDependencies } from 'super-app-showcase-sdk';
 /**
  * More documentation, installation, usage, motivation and differences with Metro is available at:
  * https://github.com/callstack/repack/blob/main/README.md
@@ -87,7 +87,6 @@ export default env => {
        * in their `package.json` might not work correctly.
        */
       ...Repack.getResolveOptions(platform),
-
       /**
        * Uncomment this to ensure all `react-native*` imports will resolve to the same React Native
        * dependency. You might need it when using workspaces/monorepos or unconventional project
@@ -106,7 +105,6 @@ export default env => {
      */
     output: {
       clean: true,
-      // hashFunction: 'xxhash64',
       path: path.join(dirname, 'build/generated', platform),
       filename: 'index.bundle',
       chunkFilename: '[name].chunk.bundle',
@@ -155,7 +153,6 @@ export default env => {
             /node_modules(.*[/\\])+@react-navigation/,
             /node_modules(.*[/\\])+@react-native-community/,
             /node_modules(.*[/\\])+@expo/,
-            /node_modules(.*[/\\])+react-freeze/,
             /node_modules(.*[/\\])+pretty-format/,
             /node_modules(.*[/\\])+metro/,
             /node_modules(.*[/\\])+abort-controller/,
@@ -200,6 +197,7 @@ export default env => {
             options: {
               platform,
               devServerEnabled: Boolean(devServer),
+              inline: true,
               /**
                * Defines which assets are scalable - which assets can have
                * scale suffixes: `@1x`, `@2x` and so on.
@@ -232,44 +230,33 @@ export default env => {
           assetsPath,
         },
       }),
+      /**
+       * This plugin is nessessary to make Module Federation work.
+       */
       new Repack.plugins.ModuleFederationPlugin({
-        name: 'HostApp',
-        remotes: {
-          news: 'news@http://localhost:9001/remoteEntry.js',
-          MiniAppExt: 'MiniAppExt@http://localhost:9002/remoteEntry.js',
+        /**
+         * The name of the module is used to identify the module in URLs resolver and imports.
+         */
+        name: 'auth',
+        /**
+         * This is a list of modules that will be shared between remote containers.
+         */
+        exposes: {
+          './AccountScreen': './src/screens/AccountScreen',
+          './SignInScreen': './src/screens/SignInScreen',
+          './AuthProvider': './src/providers/AuthProvider',
         },
-        shared: {
-          react: {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^18.2.0',
-          },
-          'react-native': {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^0.72.7',
-          },
-          '@react-navigation/native': {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^6.1.6',
-          },
-          '@react-navigation/native-stack': {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^6.9.12',
-          },
-          'react-native-safe-area-context': {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^4.5.0',
-          },
-          'react-native-screens': {
-            singleton: true,
-            eager: true,
-            requiredVersion: '^3.20.0',
-          },
-        },
+        /**
+         * Shared modules are shared in the share scope.
+         * React, React Native and React Navigation should be provided here because there should be only one instance of these modules.
+         * Their names are used to match requested modules in this compilation.
+         */
+        shared: getSharedDependencies({ eager: false }),
+      }),
+      new Repack.plugins.CodeSigningPlugin({
+        enabled: mode === 'production',
+        privateKeyPath: path.join('..', '..', 'code-signing.pem'),
+        outputPath: path.join('build', 'outputs', platform, 'remotes'),
       }),
     ],
   };

@@ -201,6 +201,7 @@ export default env => {
                         options: {
                             platform,
                             devServerEnabled: Boolean(devServer),
+                            inline: true,
                             /**
                              * Defines which assets are scalable - which assets can have
                              * scale suffixes: `@1x`, `@2x` and so on.

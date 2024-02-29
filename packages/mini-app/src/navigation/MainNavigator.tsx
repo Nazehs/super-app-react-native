@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
@@ -19,7 +19,8 @@ export type MainStackNavigationProp =
 
 const Main = createNativeStackNavigator<MainStackParamList>();
 
-const MainNavigator = () => {
+const MainNavigator = (data: { mobileNumber: string, isSignOut: boolean, isLoading: boolean }) => {
+  console.log("mobileNumber", data)
   return (
     <Main.Navigator
       screenOptions={{

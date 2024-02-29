@@ -7,7 +7,8 @@
   "private": true,
   "workspaces": [
     "packages/host-app",
-    "packages/mini-app"
+    "packages/mini-app",
+    "packages/auth"
   ],
   "packageManager": "yarn@3.4.1",
   "scripts": {
@@ -18,9 +19,13 @@
     "run:host-app:ios": "yarn workspace HostApp run ios",
     "run:host-app:android": "yarn workspace HostApp run android",
     "run:mini-app:ios": "yarn workspace MiniApp run ios",
-    "run:mini-app:android": "yarn workspace MiniApp run android"
+    "run:mini-app:android": "yarn workspace MiniApp run android",
+    "adbreverse": "adb reverse tcp:3000 tcp:3000 && adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9000 tcp:9000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003"
   },
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "dependencies": {
+    "react-redux": "^9.1.0"
   }
 }

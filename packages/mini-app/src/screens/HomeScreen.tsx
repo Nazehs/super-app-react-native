@@ -1,10 +1,23 @@
-import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {MainStackNavigationProp} from '../navigation/MainNavigator';
+import { useNavigation } from '@react-navigation/native';
+import React, { useCallback, useEffect } from 'react';
+import { Alert, Button, Linking, StyleSheet, Text, View } from 'react-native';
+import { MainStackNavigationProp } from '../navigation/MainNavigator';
+
 
 const HomeScreen = () => {
   const navigation = useNavigation<MainStackNavigationProp>();
+  useEffect(() => {
+    const handleDeepLink = (event: any) => {
+      console.log(event.url);
+    };
+
+    const deepLinkSubscription = Linking.addEventListener(
+      'url',
+      handleDeepLink,
+    );
+
+    return () => deepLinkSubscription.remove();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -14,6 +27,14 @@ const HomeScreen = () => {
         title="Navigate to MiniApp GalleryScreen"
         onPress={() => {
           navigation.navigate('Gallery');
+        }}
+      />
+      <Button
+        color="rgba(127, 103, 190, 1)"
+        title="Navigate to Super APP"
+        onPress={() => {
+          console.log('clicked to open main app');
+          Linking.openURL('hostapp://Home');
         }}
       />
     </View>

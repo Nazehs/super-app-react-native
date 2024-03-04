@@ -11,6 +11,17 @@ const AuthProvider = React.lazy(() =>
 const SignInScreen = React.lazy(() =>
   Federated.importModule('auth', './SignInScreen'),
 );
+const linking = {
+  prefixes: ['hostapp://'],
+  config: {
+    screens: {
+      Home: 'Home',
+      Detail: 'Detail',
+      MiniApp: 'MiniApp',
+      news: 'news',
+    },
+  },
+};
 const App = () => {
   return (
     <React.Suspense fallback={<SplashScreen />}>
@@ -28,7 +39,9 @@ const App = () => {
             );
           }
           return (
-            <NavigationContainer onReady={() => RNBootSplash.hide({ fade: true })}>
+            <NavigationContainer
+              linking={linking}
+              onReady={() => RNBootSplash.hide({fade: true})}>
               <MainNavigator />
             </NavigationContainer>
           );

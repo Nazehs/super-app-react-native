@@ -1,11 +1,11 @@
-import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import React, { useEffect } from 'react';
+import { Button, Image, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 const data = Array(10)
   .fill('')
   .map((_, i) => `Picture ${i}`);
 
-const Row = ({title}: {title: string}) => (
+const Row = ({ title }: { title: string }) => (
   <View style={styles.row}>
     <View style={styles.titleContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -13,11 +13,24 @@ const Row = ({title}: {title: string}) => (
         The quick brown fox jumps over the lazy dog
       </Text>
     </View>
-    <Image source={{uri: 'https://picsum.photos/70?a'}} style={styles.image} />
+    <Image source={{ uri: 'https://picsum.photos/70?a' }} style={styles.image} />
   </View>
 );
 
 const GalleryScreen = () => {
+  useEffect(() => {
+    const handleDeepLink = (event: any) => {
+      console.log(event.url);
+    };
+
+    const deepLinkSubscription = Linking.addEventListener(
+      'url',
+      handleDeepLink,
+    );
+
+    return () => deepLinkSubscription.remove();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       {data.map(title => (
@@ -26,6 +39,15 @@ const GalleryScreen = () => {
           <View style={styles.separator} />
         </React.Fragment>
       ))}
+      <Button
+        color="rgba(127, 103, 190, 1)"
+        title="Navigate to Super APP"
+        onPress={() => {
+          console.log('clicked to open main app');
+          Linking.openURL('hostapp://Home');
+          Linking.openURL('hostapp://Home?userId=123&token=abc');
+        }}
+      />
     </ScrollView>
   );
 };

@@ -1,11 +1,15 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {MainStackNavigationProp} from '../navigation/MainNavigator';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { MainStackNavigationProp } from '../navigation/MainNavigator';
 
-const HomeScreen = () => {
+const HomeScreen = ({ route }) => {
   const navigation = useNavigation<MainStackNavigationProp>();
 
+  if (route.params) {
+    const { userId, token } = route.params;
+    console.log('Data from mini app ', JSON.stringify({ userId, token }, null, 2));
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.label}>HomeScreen</Text>

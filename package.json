@@ -15,6 +15,7 @@
     "bootstrap": "yarn && yarn workspaces foreach run bootstrap",
     "start": "concurrently -P 'yarn:start:*(!standalone) {1}'",
     "start:host-app": "yarn workspace HostApp run start",
+    "start:auth-app": "yarn workspace auth run start",
     "start:mini-app": "yarn workspace MiniApp run start",
     "run:host-app:ios": "yarn workspace HostApp run ios",
     "run:host-app:android": "yarn workspace HostApp run android",

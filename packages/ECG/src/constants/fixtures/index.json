@@ -1,0 +1,29 @@
+{
+    "header": {
+        "title": "Ghana Water"
+    },
+    "body": {
+        "title": "Who is this payment for?",
+        "radioButton": {
+            "label1": "Myself",
+            "label2": "A Customer"
+        },
+        "dropdown": {
+            "label1": "Select Utility",
+            "label2": "Account Number"
+        },
+        "paymentAccount": "Select Payment Account",
+        "placeHolders": {
+            "meterNumber": "Meter number",
+            "mobileNumber": "Mobile number",
+            "billName": "Bill name",
+            "billType": "billType",
+            "amount": "Amount"
+        },
+        "amount": "Amount",
+        "currency": "GHS"
+    },
+    "footer": {
+        "button": "CONTINUE"
+    }
+}

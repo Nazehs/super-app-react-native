@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 const DetailScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>DetailScreen</Text>
+      <Text style={styles.label}>This is the host app detail page</Text>
     </View>
   );
 };

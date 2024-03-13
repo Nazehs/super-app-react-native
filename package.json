@@ -8,20 +8,23 @@
   "workspaces": [
     "packages/host-app",
     "packages/mini-app",
-    "packages/auth"
+    "packages/auth",
+    "packages/ECG"
   ],
   "packageManager": "yarn@3.4.1",
   "scripts": {
     "bootstrap": "yarn && yarn workspaces foreach run bootstrap",
     "start": "concurrently -P 'yarn:start:*(!standalone) {1}'",
     "start:host-app": "yarn workspace HostApp run start",
+    "start:ecg-app": "yarn workspace ECG run start",
     "start:auth-app": "yarn workspace auth run start",
     "start:mini-app": "yarn workspace MiniApp run start",
     "run:host-app:ios": "yarn workspace HostApp run ios",
     "run:host-app:android": "yarn workspace HostApp run android",
+    "run:ecg-app:android": "yarn workspace ECG run android",
     "run:mini-app:ios": "yarn workspace MiniApp run ios",
     "run:mini-app:android": "yarn workspace MiniApp run android",
-    "adbreverse": "adb reverse tcp:3000 tcp:3000 && adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9000 tcp:9000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003"
+    "adbreverse": "adb reverse tcp:3000 tcp:3000 && adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9000 tcp:9000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003 && adb reverse tcp:9004 tcp:9004"
   },
   "devDependencies": {
     "concurrently": "^7.6.0"

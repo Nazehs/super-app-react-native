@@ -199,6 +199,7 @@ export default env => {
             loader: '@callstack/repack/assets-loader',
             options: {
               platform,
+              inline: true,
               devServerEnabled: Boolean(devServer),
               /**
                * Defines which assets are scalable - which assets can have
@@ -242,12 +243,32 @@ export default env => {
           react: {
             singleton: true,
             eager: true,
-            requiredVersion: '^18.2.0',
+            requiredVersion: '18.2.0',
           },
           'react-native': {
             singleton: true,
             eager: true,
-            requiredVersion: '^0.72.7',
+            requiredVersion: '0.72.5',
+          },
+          'react-native-click-outside': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^0.1.1',
+          },
+          'react-native-outside-press': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^1.2.2'
+          },
+          "react-native-gesture-handler": {
+            singleton: true,
+            eager: true,
+            requiredVersion: "^2.13.1"
+          },
+          'react-native-svg': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^14.1.0',
           },
           '@react-navigation/native': {
             singleton: true,
@@ -262,14 +283,104 @@ export default env => {
           'react-native-safe-area-context': {
             singleton: true,
             eager: true,
-            requiredVersion: '^4.5.0',
+            requiredVersion: '^4.7.2',
           },
           'react-native-screens': {
             singleton: true,
             eager: true,
             requiredVersion: '^3.20.0',
           },
+          '@hookform/resolvers': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^3.3.3',
+          },
+          '@react-native-async-storage/async-storage': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^1.21.0',
+          },
+          '@reduxjs/toolkit': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^1.9.5',
+          },
+          '@react-native-community/checkbox': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^0.5.16',
+          },
+          '@shopify/restyle': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^2.4.2',
+          },
+          axios: { singleton: true, eager: true, requiredVersion: '^1.6.7' },
+          'react-hook-form': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^7.49.2',
+          },
+          'react-native-modal': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^13.0.1',
+          },
+          'react-native-reanimated': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^3.6.1',
+          },
+          'react-native-size-matters': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^0.4.2',
+          },
+          'react-redux': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^8.0.5',
+          },
+          'redux-persist': {
+            singleton: true,
+            eager: true,
+            requiredVersion: '^6.0.0',
+          },
+          zod: { singleton: true, eager: true, requiredVersion: '^3.22.4' },
         },
+        // shared: {
+        //   react: {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^18.2.0',
+        //   },
+        //   'react-native': {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^0.72.7',
+        //   },
+        //   '@react-navigation/native': {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^6.1.6',
+        //   },
+        //   '@react-navigation/native-stack': {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^6.9.12',
+        //   },
+        //   'react-native-safe-area-context': {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^4.5.0',
+        //   },
+        //   "react-native-device-info": { singleton: true, eager: true, requiredVersion: "^10.12.0" },
+        //   'react-native-screens': {
+        //     singleton: true,
+        //     eager: true,
+        //     requiredVersion: '^3.20.0',
+        //   },
+        // },
       }),
     ],
   };

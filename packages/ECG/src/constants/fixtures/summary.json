@@ -1,0 +1,15 @@
+{
+    "header":{
+        "title":"Pay Utilities"
+    },
+    "body":{
+        "title":"Bill Summary",
+        "paymentAccount" : "Select Payment Account" ,
+        "dropdown" : "Main Account",
+        "amount": "Amount",
+        "currency": "GHS"
+    },
+    "footer":{
+        "button":"CONTINUE"
+    }
+}

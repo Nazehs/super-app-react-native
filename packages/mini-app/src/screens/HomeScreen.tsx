@@ -37,6 +37,15 @@ const HomeScreen = () => {
           Linking.openURL('hostapp://Home');
         }}
       />
+
+      <Button
+        color="rgba(127, 103, 190, 1)"
+        title="Navigate to Super APP Detail"
+        onPress={() => {
+          console.log('clicked to open main app');
+          Linking.openURL('hostapp://Detail');
+        }}
+      />
     </View>
   );
 };

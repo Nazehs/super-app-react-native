@@ -9,13 +9,15 @@ import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
 import MiniAppScreen from '../screens/MiniAppScreen';
 import NewsScreen from '../screens/NewsScreen';
+import ElectricityScreen from '../screens/ElectricityScreen';
 
 export type MainStackParamList = {
-  Home: undefined;
+  MainHome: undefined;
   Detail: undefined;
   MiniApp: undefined;
   news: undefined;
   MiniAppExt: undefined;
+  ECG: undefined;
 };
 
 export type MainStackNavigationProp =
@@ -27,17 +29,18 @@ const MainNavigator = () => {
   return (
     <Main.Navigator
       screenOptions={{
-        headerTitle: 'HostApp',
+        // headerTitle: 'Main App',
         headerBackTitleVisible: false,
         headerShown: false,
         headerStyle: styles.header,
         headerTitleStyle: styles.headerTitle,
-        headerTintColor: 'rgba(255,255,255,1)',
+        headerTintColor: '#004f71',
       }}>
-      <Main.Screen name="Home" component={HomeScreen} />
+      <Main.Screen name="MainHome" component={HomeScreen} />
       <Main.Screen name="Detail" component={DetailScreen} />
-      <Main.Screen name="MiniApp" component={MiniAppScreen} />
+      {/* <Main.Screen name="MiniApp" component={MiniAppScreen} /> */}
       <Main.Screen name="news" component={NewsScreen} />
+      <Main.Screen name="MiniApp" component={MiniAppScreen} />
     </Main.Navigator>
   );
 };

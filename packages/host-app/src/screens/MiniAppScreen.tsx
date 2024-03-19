@@ -5,12 +5,6 @@ import { Federated } from '@callstack/repack/client';
 import SplashScreen from '../Splashscreen';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-// const AuthProvider = React.lazy(() =>
-//   Federated.importModule('auth', './AuthProvider'),
-// );
-// const SignInScreen = React.lazy(() =>
-//   Federated.importModule('auth', './SignInScreen'),
-// );
 
 const MiniAppNavigator = React.lazy(() =>
   Federated.importModule('MiniApp', './MiniApp'),

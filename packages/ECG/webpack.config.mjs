@@ -318,11 +318,11 @@ export default env => {
                     },
                 },
             }),
-            // new Repack.plugins.CodeSigningPlugin({
-            //     privateKeyPath: './code-signing.key',
-            //     outputFile: 'code_signing_mapping.json',
-            //     outputPath: path.join(dirname, 'build/outputs', platform, 'remote'),
-            // }),
+            new Repack.plugins.CodeSigningPlugin({
+                privateKeyPath: './code-signing.pem',
+                outputFile: 'code_signing_mapping.json',
+                outputPath: path.join(dirname, 'build/outputs', platform, 'remotes'),
+            }),
         ],
     };
 };

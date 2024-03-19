@@ -5,15 +5,9 @@ import { Federated } from '@callstack/repack/client';
 import SplashScreen from '../Splashscreen';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
 
-const AuthProvider = React.lazy(() =>
-  Federated.importModule('auth', './AuthProvider'),
-);
-const SignInScreen = React.lazy(() =>
-  Federated.importModule('auth', './SignInScreen'),
-);
 
 const MiniAppNavigator = React.lazy(() =>
-  Federated.importModule('MiniApp', './MiniAppNavigator'),
+  Federated.importModule('MiniApp', './MiniApp'),
 );
 
 const FallbackComponent = () => (
@@ -25,7 +19,7 @@ const FallbackComponent = () => (
 const MiniAppScreen = () => {
   return (
     <React.Suspense fallback={<SplashScreen />}>
-      <AuthProvider>
+      {/* <AuthProvider>
         {({ isSignOut, isLoading, mobileNumber }: { isSignOut: boolean, isLoading: boolean, mobileNumber: string }) => {
           console.log('Auth Data in mini App: ', { isSignOut, isLoading, mobileNumber });
           if (isLoading) {
@@ -38,13 +32,13 @@ const MiniAppScreen = () => {
               </React.Suspense>
             );
           }
-          return (
-            <React.Suspense fallback={<FallbackComponent />}>
-              <MiniAppNavigator data={{ mobileNumber, isLoading, isSignOut }} />
-            </React.Suspense>
-          );
+          return ( */}
+      <React.Suspense fallback={<FallbackComponent />}>
+        <MiniAppNavigator />
+      </React.Suspense>
+      {/* );
         }}
-      </AuthProvider>
+      </AuthProvider> */}
     </React.Suspense>
   );
 };

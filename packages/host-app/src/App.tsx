@@ -4,13 +4,15 @@ import MainNavigator from './navigation/MainNavigator';
 import SplashScreen from './Splashscreen';
 import { Federated } from '@callstack/repack/client';
 import RNBootSplash from 'react-native-bootsplash';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { EventProvider } from 'react-native-outside-press';
+import { ClickOutsideProvider } from 'react-native-click-outside';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import store, { persistor } from './store/store';
+import { ThemeProvider } from '@shopify/restyle';
+import lightThemes from './style/theme';
 
-const AuthProvider = React.lazy(() =>
-  Federated.importModule('auth', './AuthProvider'),
-);
-const SignInScreen = React.lazy(() =>
-  Federated.importModule('auth', './SignInScreen'),
-);
 const linking = {
   prefixes: ['hostapp://'],
   config: {
@@ -24,30 +26,24 @@ const linking = {
 };
 const App = () => {
   return (
-    <React.Suspense fallback={<SplashScreen />}>
-      <AuthProvider>
-        {({ isSignOut, isLoading, mobileNumber }: { isSignOut: boolean, isLoading: boolean, mobileNumber: string }) => {
-          console.log("Auth Data in host App: ", { isSignOut, isLoading, mobileNumber });
-          if (isLoading) {
-            return <SplashScreen />;
-          }
-          if (isSignOut) {
-            return (
-              <React.Suspense fallback={<SplashScreen />}>
-                <SignInScreen />
-              </React.Suspense>
-            );
-          }
-          return (
-            <NavigationContainer
-              linking={linking}
-              onReady={() => RNBootSplash.hide({fade: true})}>
-              <MainNavigator />
-            </NavigationContainer>
-          );
-        }}
-      </AuthProvider>
-    </React.Suspense>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ClickOutsideProvider>
+        <EventProvider
+          style={{
+            flex: 1,
+          }}>
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              <ThemeProvider theme={lightThemes}>
+                <NavigationContainer>
+                  <MainNavigator />
+                </NavigationContainer>
+              </ThemeProvider>
+            </PersistGate>
+          </Provider>
+        </EventProvider>
+      </ClickOutsideProvider>
+    </GestureHandlerRootView>
   );
 };
 

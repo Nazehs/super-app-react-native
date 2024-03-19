@@ -15,8 +15,9 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
 
-        <!-- Handle URLs with the scheme "hostapp" and host "home" -->
+        <!-- Handle URLs with the scheme "hostapp" and host "Home" -->
         <data android:scheme="hostapp" android:host="Home" />
+        <data android:scheme="hostapp" android:host="Detail" />
       </intent-filter>
     </activity>
   </application>

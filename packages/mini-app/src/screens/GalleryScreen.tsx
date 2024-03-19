@@ -44,7 +44,6 @@ const GalleryScreen = () => {
         title="Navigate to Super APP"
         onPress={() => {
           console.log('clicked to open main app');
-          Linking.openURL('hostapp://Home');
           Linking.openURL('hostapp://Home?userId=123&token=abc');
         }}
       />
